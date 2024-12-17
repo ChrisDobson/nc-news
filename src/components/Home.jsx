@@ -22,9 +22,17 @@ export default function Home() {
     if (isLoading) return <p>Loading articles...</p>;
     if (error) return <p>{error}</p>;
     return (
-        <>
-        <h2 className='heading'>All Articles</h2>
+        <div className='home'>
+            <h2 className='heading'>All Articles</h2>
+            <div className='key'>
+                <h3>Topics:</h3>
+                <ul>
+                    <li><span className='key-item coding'> Coding</span></li>
+                    <li><span className='key-item cooking'> Cooking</span></li>
+                    <li><span className='key-item football'> Football</span></li>
+                </ul>
+            </div>
         <ArticleCards articles={articles}/>
-        </>
+        </div>
     );
 }
