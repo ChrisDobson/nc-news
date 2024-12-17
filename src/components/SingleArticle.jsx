@@ -1,23 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getArticleById } from '../api';
+import CommentCards from './CommentCards';
+import Collapsible from './Collapsible';
+import { getArticleById, getCommentsById } from '../api';
 import { format } from 'date-fns';
 
 export default function SingleArticle() {
     const { article_id } = useParams();
     const [article, setArticle] = useState(null);
+    const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        getArticleById(article_id)
-        .then((response) => {
-            setArticle(response.article);
+        Promise.all([getArticleById(article_id), getCommentsById(article_id)])
+        .then(([articleResponse, commentsResponse]) => {
+            setArticle(articleResponse.article);
+            setComments(commentsResponse.comments);
             setIsLoading(false);
         })
         .catch((err) => {
             console.log(err);
-            setError('Failed to fetch the article.');
+            setError('Failed to fetch the article or comments.');
             setIsLoading(false);
         });
     }, [article_id]);
@@ -37,6 +41,7 @@ const getTopic = (topic) => {
 }
 
 if (isLoading) return <p>Loading article...</p>;
+if (error) return <p>{error}</p>;
 if (!article) return <p>Article not found.</p>;
 
 return (
@@ -47,8 +52,11 @@ return (
     <p>Created: {formatDate(article.created_at)}</p>
     <p>Number of votes: {article.votes}</p>
     <img src={article.article_img_url} alt={article.title} />
-    <p>Number of comments: {article.comment_count}</p>
-    <Link to='/' className='return-to-home'>Return to homepage.</Link>
+    <Collapsible>
+    <CommentCards comments={comments}/>
+    </Collapsible>
+    <br/>
+    <Link to='/' className='return-to-home'>Return to home</Link>
     </div>
     );
 }
