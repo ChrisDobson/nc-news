@@ -22,16 +22,92 @@
   border-radius: 8px;
   text-align: center;
   overflow: hidden;
-  background-color: #000000;
+  cursor: pointer;
+}
+
+.article-card.coding {
+  background-color: #007bff;
+  color: white;
+}
+
+.article-card.cooking {
+  background-color: #28a745;
+}
+
+.article-card.football {
+  background-color: #dc3545;
+  color: white;
+}
+
+.article-card:hover {
+  opacity: 0.9;
 }
 
 .article-card a {
   margin-top: auto;
-  color: #007bff;
-  text-decoration: none;
+  color: #ffffff;
   font-weight: bold;
 }
 
 .article-card a:hover {
   text-decoration: underline;
+}
+
+.return-to-home {
+  margin-top: auto;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.return-to-home:hover {
+  text-decoration: underline;
+}
+
+.single-article {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.single-article.coding {
+  background-color: #007bff;
+}
+
+.single-article.cooking {
+  background-color: #28a745;
+}
+
+.single-article.football {
+  background-color: #dc3545;
+}
+
+.return-to-home {
+  color: #ffffff;
+}
+
+.return-to-home:hover {
+  text-decoration: underline;
+}
+
+.key {
+  display: flex;
+  justify-content: center;
+}
+
+.key-item {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.key-item.coding {
+  background-color: #007bff;
+}
+
+.key-item.cooking {
+  background-color: #28a745;
+}
+
+.key-item.football {
+  background-color: #dc3545;
 }
