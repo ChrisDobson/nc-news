@@ -111,3 +111,14 @@
 .key-item.football {
   background-color: #dc3545;
 }
+
+.comment-card {
+  padding: 1px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  /* cursor: pointer; */
+}
+
+/* .comment-card:hover {
+  opacity: 0.9;
+} */
