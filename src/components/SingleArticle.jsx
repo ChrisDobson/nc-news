@@ -28,7 +28,7 @@ export default function SingleArticle() {
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        return format(date, 'dd MMM yyy');
+        return format(date, 'dd MMM yyyy');
     };
 
 const getTopic = (topic) => {
@@ -40,6 +40,12 @@ const getTopic = (topic) => {
     }
 }
 
+const handleClick = () => {
+    setArticle((currArticle) => ({
+        ...currArticle, votes: currArticle.votes + 1,
+    }));
+};
+
 if (isLoading) return <p>Loading article...</p>;
 if (error) return <p>{error}</p>;
 if (!article) return <p>Article not found.</p>;
@@ -47,11 +53,12 @@ if (!article) return <p>Article not found.</p>;
 return (
     <div className={`single-article ${getTopic(article.topic)}`}>
     <h2>{article.title}</h2>
-    <p>By: {article.author}</p>
+    <p><strong>By:</strong> {article.author}</p>
     <p>{article.body}</p>
-    <p>Created: {formatDate(article.created_at)}</p>
-    <p>Number of votes: {article.votes}</p>
-    <img src={article.article_img_url} alt={article.title} />
+    <p><strong>Created:</strong> {formatDate(article.created_at)}</p>
+    <p><strong>Number of votes:</strong> {article.votes}</p>
+    <button onClick={handleClick} className='button'>Upvote</button>
+    <img src={article.article_img_url} alt={article.title} className='image'/>
     <Collapsible>
     <CommentCards comments={comments}/>
     </Collapsible>
