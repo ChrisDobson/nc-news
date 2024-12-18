@@ -4,10 +4,11 @@ const api = axios.create({
     baseURL: 'https://my-nc-news-2zd4.onrender.com/api',
 });
 
-export function getArticles() {
-    return api.get('/articles', { params: { limit: 100 } })
+export function getArticles(topic = null) {
+    const params = topic ? { topic, limit: 50 } : { limit: 100};
+    return api.get('/articles', { params })
     .then(({ data }) => {
-        return data.articles;
+        return data.articles || [];
     });
 }
 
