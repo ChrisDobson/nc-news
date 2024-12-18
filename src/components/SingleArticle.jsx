@@ -6,7 +6,7 @@ import AddComment from './AddComment';
 import { getArticleById, getCommentsById, patchArticle } from '../api';
 import { format } from 'date-fns';
 
-export default function SingleArticle() {
+export default function SingleArticle({ currUser }) {
     const { article_id } = useParams();
     const [article, setArticle] = useState(null);
     const [comments, setComments] = useState([]);
@@ -61,6 +61,12 @@ const handleAddComment = (newComment) => {
     setComments((currComments) => [newComment, ...currComments]);
 };
 
+const handleCommentDelete = (comment_id) => {
+    setComments((currComments) => currComments.filter((comment) =>
+    comment.comment_id !== comment_id)
+);
+}
+
 if (isLoading) return <p>Loading article...</p>;
 if (error) return <p>{error}</p>;
 if (!article) return <p>Article not found.</p>;
@@ -80,7 +86,7 @@ return (
         <h3>Comments</h3>
         <AddComment article_id={article_id} onAddComment={handleAddComment}/>
         <Collapsible>
-            <CommentCards comments={comments}/>
+            <CommentCards comments={comments} currUser="tickle122" onCommentDelete={handleCommentDelete}/>
         </Collapsible>
         <br/>
         <Link to='/' className='return-to-home'>Return to home</Link>

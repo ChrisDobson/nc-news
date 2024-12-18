@@ -6,6 +6,8 @@ export default function Home() {
     const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const currUser = "tickle122";
     
     useEffect(() => {
         getArticles()
@@ -22,6 +24,7 @@ export default function Home() {
     if (error) return <p>{error}</p>;
     return (
         <div className='home'>
+            <p className='userMessage'>You are logged in as <strong>{currUser}</strong>. Welcome!</p>
             <h2 className='heading'>All Articles</h2>
             <div className='key'>
                 <h3>Topics:</h3>
