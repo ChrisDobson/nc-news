@@ -4,7 +4,7 @@ import CommentCards from './CommentCards';
 import Collapsible from './Collapsible';
 import AddComment from './AddComment';
 import { getArticleById, getCommentsById, patchArticle } from '../api';
-import { format } from 'date-fns';
+import formatDate from '../utils/formatDate';
 
 export default function SingleArticle({ currUser }) {
     const { article_id } = useParams();
@@ -36,11 +36,6 @@ export default function SingleArticle({ currUser }) {
             setComments([]);
         });
     }, [article_id]);
-
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        return format(date, 'dd MMM yyyy');
-    };
     
     const handleVote = (voteChange) => {
         const previousVotes = article.votes;

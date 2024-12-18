@@ -5,24 +5,16 @@
   text-align: center;
 }
 
-#articles-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.articles-container {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  padding: 20px;
 }
 
 .article-card {
-  box-sizing: border-box;
-  width: 200px;
-  height: 250px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  text-align: center;
-  overflow: hidden;
-  cursor: pointer;
+  border: 1px solid #ddd;
 }
 
 .article-card.coding {
@@ -40,7 +32,7 @@
 }
 
 .article-card:hover {
-  opacity: 0.9;
+  transform: scale(1.03);
 }
 
 .article-card a {
@@ -125,7 +117,7 @@
 } */
 
 img {
-  width: 100%;
+  width: 50%;
   margin-top: 20px;
   border: 1px solid #ccc;
 }

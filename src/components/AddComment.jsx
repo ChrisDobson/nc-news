@@ -38,7 +38,7 @@ export default function AddComment({ article_id, onAddComment }) {
         })
         .catch((err) => {
             console.log(err);
-            setError('Failed to submit the comment. Please try again.');
+            setError('Failed to post comment. Please try again.');
         })
         .finally(() => {
             setLoading(false);
