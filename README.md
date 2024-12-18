@@ -1,8 +1,12 @@
-# React + Vite
+# Northcoders News Frontend Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome!
 
-Currently, two official plugins are available:
+This portfolio project was created in Week 10 of a Software Development in JavaScript Skills Bootcamp, provided by [Northcoders](https://northcoders.com/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can view the hosted application here: [Northcoders News](https://northcoders-app.netlify.app/).
+
+-General info about your app, a brief description of what the project is, and how to use your app.
+-A link to your back end repo.
+-The minimum version of Node required to run locally. You can check your Node version using node --version in your terminal.
+-Clear instructions on how to run your project locally, e.g. git clone <repo-url>, cd..., etc.
