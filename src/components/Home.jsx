@@ -10,8 +10,7 @@ export default function Home() {
     useEffect(() => {
         getArticles()
         .then((articlesFromApi) => {
-            const sortedArticles = articlesFromApi.sort((a, b) => a.article_id - b.article_id);
-            setArticles(sortedArticles);
+            setArticles(articlesFromApi);
             setIsLoading(false);
         }).catch((err) => {
             console.log(err);

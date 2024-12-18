@@ -128,3 +128,9 @@ img {
   margin-top: 20px;
   border: 1px solid #ccc;
 }
+
+.vote-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
