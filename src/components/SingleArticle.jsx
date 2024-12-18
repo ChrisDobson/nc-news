@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import CommentCards from './CommentCards';
 import Collapsible from './Collapsible';
-import { getArticleById, getCommentsById } from '../api';
+import AddComment from './AddComment';
+import { getArticleById, getCommentsById, patchArticle } from '../api';
 import { format } from 'date-fns';
 
 export default function SingleArticle() {
@@ -13,16 +14,26 @@ export default function SingleArticle() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        Promise.all([getArticleById(article_id), getCommentsById(article_id)])
-        .then(([articleResponse, commentsResponse]) => {
+        getArticleById(article_id)
+        .then((articleResponse) => {
             setArticle(articleResponse.article);
-            setComments(commentsResponse.comments);
             setIsLoading(false);
         })
         .catch((err) => {
             console.log(err);
-            setError('Failed to fetch the article or comments.');
+            setError('Failed to fetch the article.');
             setIsLoading(false);
+        });
+    }, [article_id]);
+
+    useEffect(() => {
+        getCommentsById(article_id)
+        .then((commentsResponse) => {
+            setComments(commentsResponse.comments || []);
+        })
+        .catch((err) => {
+            console.log(err);
+            setComments([]);
         });
     }, [article_id]);
 
@@ -30,20 +41,24 @@ export default function SingleArticle() {
         const date = new Date(dateString);
         return format(date, 'dd MMM yyyy');
     };
-
-const getTopic = (topic) => {
-    switch (topic) {
-        case 'coding': return 'coding';
-        case 'cooking': return 'cooking';
-        case 'football': return 'football';
-        default: return '';
-    }
-}
-
-const handleClick = () => {
-    setArticle((currArticle) => ({
-        ...currArticle, votes: currArticle.votes + 1,
+    
+    const handleVote = (voteChange) => {
+        const previousVotes = article.votes;
+        setArticle((currArticle) => ({
+            ...currArticle, votes: currArticle.votes + voteChange,
     }));
+    
+    patchArticle(article_id, voteChange)
+    .catch((err) => {
+        console.log(err);
+        setArticle((currArticle) => ({
+            ...currArticle, votes: previousVotes,
+        }));
+    });
+};
+
+const handleAddComment = (newComment) => {
+    setComments((currComments) => [newComment, ...currComments]);
 };
 
 if (isLoading) return <p>Loading article...</p>;
@@ -51,19 +66,24 @@ if (error) return <p>{error}</p>;
 if (!article) return <p>Article not found.</p>;
 
 return (
-    <div className={`single-article ${getTopic(article.topic)}`}>
-    <h2>{article.title}</h2>
-    <p><strong>By:</strong> {article.author}</p>
-    <p>{article.body}</p>
-    <p><strong>Created:</strong> {formatDate(article.created_at)}</p>
-    <p><strong>Number of votes:</strong> {article.votes}</p>
-    <button onClick={handleClick} className='button'>Upvote</button>
-    <img src={article.article_img_url} alt={article.title} className='image'/>
-    <Collapsible>
-    <CommentCards comments={comments}/>
-    </Collapsible>
-    <br/>
-    <Link to='/' className='return-to-home'>Return to home</Link>
+    <div className={`single-article ${article.topic}`}>
+        <h2>{article.title}</h2>
+        <p><strong>By:</strong> {article.author}</p>
+        <p>{article.body}</p>
+        <p><strong>Posted:</strong> {formatDate(article.created_at)}</p>
+        <p><strong>Number of votes:</strong> {article.votes}</p>
+        <div className='vote-buttons'>
+            <button onClick={() => handleVote(1)}>Upvote</button>
+            <button onClick={() => handleVote(-1)}>Downvote</button>
+        </div>
+        <img src={article.article_img_url} alt={article.title}/>
+        <h3>Comments</h3>
+        <AddComment article_id={article_id} onAddComment={handleAddComment}/>
+        <Collapsible>
+            <CommentCards comments={comments}/>
+        </Collapsible>
+        <br/>
+        <Link to='/' className='return-to-home'>Return to home</Link>
     </div>
     );
 }
