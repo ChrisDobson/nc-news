@@ -85,6 +85,7 @@ return (
         <img src={article.article_img_url} alt={article.title}/>
         <h3>Comments</h3>
         <AddComment article_id={article_id} onAddComment={handleAddComment}/>
+        <br/>
         <Collapsible>
             <CommentCards comments={comments} currUser="tickle122" onCommentDelete={handleCommentDelete}/>
         </Collapsible>
