@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { deleteComment } from '../api';
-import { format } from 'date-fns';
+import formatDate from '../utils/formatDate';
 
 export default function CommentCards ({ comments, currUser, onCommentDelete }) {
     const [deleting, setDeleting] = useState(null);
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        return format(date, 'dd MMM yyyy');
-    };
+    
     if (!comments || comments.length === 0) {
         return <p>There are currently no comments for this article.</p>;
     }

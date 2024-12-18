@@ -1,21 +1,20 @@
 import { Link } from 'react-router-dom';
-import { format } from 'date-fns';
-
+import formatDate from '../utils/formatDate';
 
 export default function ArticleCards ({ articles }) {
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        return format(date, 'dd MMM yyyy');
-    };
-
     return (
-        <ul id="articles-list">
+        <ul className='articles-container'>
             {articles.map((article) => (
                 <li key={article.article_id} className={`article-card ${article.topic}`}>
                     <Link to={`/articles/${article.article_id}`} className='article-card-link'>
                     <h3>{article.title}</h3>
+                    <p>By: {article.author}</p>
                     <p>{formatDate(article.created_at)}</p>
-                    <p>Comments: {article.comment_count} Votes: {article.votes}</p>
+                    {/* <p>Comments: {article.comment_count}</p>
+                    <p>Votes: {article.votes}</p> */}
+                    <div className='article-thumbnail'>
+                        <img src={article.article_img_url} alt={`${article.title} thumbnail`} className='thumbnail'/>
+                    </div>
                     </Link>
                     </li>
             ))}
