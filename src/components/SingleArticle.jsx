@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import CommentCards from './CommentCards';
-import Collapsible from './Collapsible';
 import AddComment from './AddComment';
+import Collapsible from './Collapsible';
+import CommentCards from './CommentCards';
 import { getArticleById, getCommentsById, patchArticle } from '../api';
 import formatDate from '../utils/formatDate';
 

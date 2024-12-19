@@ -3,7 +3,7 @@ import axios from 'axios';
 const api = axios.create({ baseURL: 'https://my-nc-news-2zd4.onrender.com/api' });
 
 export function getArticles(topic = null, { sort_by = 'created_at', order = 'desc' } = {}) {
-    const params = { sort_by, order, limit: 50 };
+    const params = { sort_by, order, limit: 100 };
     if (topic) {
         params.topic = topic;
     }
