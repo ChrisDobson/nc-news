@@ -49,11 +49,11 @@ export default function Home() {
             <h2 className='heading'>All Articles</h2>
             </Link>
             <div className='key'>
-                <h3>Topics:</h3>
+                <h3>Select topic:</h3>
                 <ul>
-                    <li><Link to="?topic=coding" className="key-item coding">Coding</Link></li>
-                    <li><Link to="?topic=cooking" className="key-item cooking">Cooking</Link></li>
-                    <li><Link to="?topic=football" className="key-item football">Football</Link></li>
+                    <li><Link to="?topic=coding" className="key-item coding">Coding 🧑‍💻</Link></li>
+                    <li><Link to="?topic=cooking" className="key-item cooking">Cooking 🧑‍🍳</Link></li>
+                    <li><Link to="?topic=football" className="key-item football">Football ⚽</Link></li>
                 </ul>
             </div>
             <div className='sorting-controls'>

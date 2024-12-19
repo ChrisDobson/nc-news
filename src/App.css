@@ -1,8 +1,69 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color-scheme: light dark;
+  background-color: #242424;
+}
+
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+body {
+  margin: 0;
+  display: flex;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+button {
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+.App.monochrome {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.App.monochrome .article-card.coding,
+.App.monochrome .article-card.cooking,
+.App.monochrome .article-card.football,
+.App.monochrome .single-article.coding,
+.App.monochrome .single-article.cooking,
+.App.monochrome .single-article.football {
+  background-color: #d3d3d3;
+}
+
+.App.monochrome .key-item {
+  background-color: #ccc;
+}
+
+.App.monochrome .article-card a {
+  color: #000000;
+}
+
+.App.monochrome .return-to-home {
+  color: #000000;
 }
 
 .articles-container {
@@ -19,7 +80,6 @@
 
 .article-card.coding {
   background-color: #007bff;
-  color: white;
 }
 
 .article-card.cooking {
@@ -28,7 +88,6 @@
 
 .article-card.football {
   background-color: #dc3545;
-  color: white;
 }
 
 .article-card:hover {
@@ -36,23 +95,12 @@
 }
 
 .article-card a {
-  margin-top: auto;
   color: #ffffff;
-  font-weight: bold;
 }
 
 .article-card a:hover {
   text-decoration: underline;
-}
 
-.return-to-home {
-  margin-top: auto;
-  color: #007bff;
-  font-weight: bold;
-}
-
-.return-to-home:hover {
-  text-decoration: underline;
 }
 
 .single-article {
@@ -73,11 +121,11 @@
   background-color: #dc3545;
 }
 
-.return-to-home {
+.single-article .return-to-home {
   color: #ffffff;
 }
 
-.return-to-home:hover {
+.single-article .return-to-home:hover {
   text-decoration: underline;
 }
 
@@ -109,12 +157,7 @@
   padding: 1px;
   border: 1px solid #ccc;
   overflow: hidden;
-  /* cursor: pointer; */
 }
-
-/* .comment-card:hover {
-  opacity: 0.9;
-} */
 
 img {
   width: 50%;
@@ -126,4 +169,14 @@ img {
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+.return-to-home {
+  margin-top: auto;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.return-to-home:hover {
+  text-decoration: underline;
 }
