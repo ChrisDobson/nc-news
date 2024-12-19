@@ -8,7 +8,7 @@ export default function AddComment({ article_id, onAddComment }) {
     const [loading, setLoading] = useState(false);
     const [characterCount, setCharacterCount] = useState(0);
 
-    const user = 'tickle122'; //Hardcoded user
+    const user = 'guest'; //Hardcoded user
     const max_comment_length = 1000;
 
     const handleChange = (e) => {

@@ -7,7 +7,7 @@ export default function Home() {
     const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const currUser = "tickle122";
+    const currUser = 'guest';
 
     const [searchParams, setSearchParams] = useSearchParams();
     const topic = searchParams.get('topic');

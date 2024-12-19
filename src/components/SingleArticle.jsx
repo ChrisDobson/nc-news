@@ -82,7 +82,7 @@ return (
         <AddComment article_id={article_id} onAddComment={handleAddComment}/>
         <br/>
         <Collapsible>
-            <CommentCards comments={comments} currUser="tickle122" onCommentDelete={handleCommentDelete}/>
+            <CommentCards comments={comments} currUser='guest' onCommentDelete={handleCommentDelete}/>
         </Collapsible>
         <br/>
         <Link to='/' className='return-to-home'>Return to home</Link>
