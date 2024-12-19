@@ -6,7 +6,7 @@ This portfolio project was created in Week 10 of a Software Development in JavaS
 
 You can view the hosted application here: [Northcoders News](https://northcoders-app.netlify.app/).
 
-The purpose of this project was to demonstrate my understanding of making a C.R.U.D application from a frontend perspective. Northcoders News is intended to be a social news aggregation, web content rating and discussion website. The homepage informs users that they are logged in as *tickle122*; I hardcoded this username, because user authentication was not the purpose of this task.
+The purpose of this project was to demonstrate my understanding of making a C.R.U.D application from a frontend perspective. Northcoders News is intended to be a social news aggregation, web content rating and discussion website. The homepage informs users that they are logged in as *guest*; I hardcoded this username, because user authentication was not the purpose of this task.
 
 Northcoders News has articles which are divided into topics and each article has user-curated ratings from upvotes and downvotes using my backend [API](https://my-nc-news-2zd4.onrender.com/api). Users can also add and delete comments about an article. On the homepage, a 'sort by' bar allows users to change the order in which information is displayed.
 
