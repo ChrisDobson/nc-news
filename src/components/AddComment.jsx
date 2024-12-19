@@ -37,7 +37,6 @@ export default function AddComment({ article_id, onAddComment }) {
             setCharacterCount(0);
         })
         .catch((err) => {
-            console.log(err);
             setError('Failed to post comment. Please try again.');
         })
         .finally(() => {

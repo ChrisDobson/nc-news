@@ -16,7 +16,6 @@ export default function TopicArticles() {
             setIsLoading(false);
         })
         .catch((err) => {
-            console.log(err);
             setError("Failed to fetch articles.");
             setIsLoading(false);
         });

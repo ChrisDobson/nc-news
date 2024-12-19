@@ -18,7 +18,6 @@ export default function CommentCards ({ comments, currUser, onCommentDelete }) {
             onCommentDelete(comment_id);
         })
         .catch((err) => {
-            console.error('Failed to delete the comment', err);
             alert('An error occured while trying to delete the comment.');
         })
         .finally(() => {

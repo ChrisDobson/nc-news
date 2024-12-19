@@ -20,7 +20,6 @@ export default function Home() {
             setArticles(articlesFromApi);
             setIsLoading(false);
         }).catch((err) => {
-            console.log(err);
             setError("Failed to fetch articles.");
             setIsLoading(false);
         });

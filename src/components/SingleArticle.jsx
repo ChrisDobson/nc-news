@@ -20,7 +20,6 @@ export default function SingleArticle({ currUser }) {
             setIsLoading(false);
         })
         .catch((err) => {
-            console.log(err);
             setError('Failed to fetch the article.');
             setIsLoading(false);
         });
@@ -32,7 +31,6 @@ export default function SingleArticle({ currUser }) {
             setComments(commentsResponse.comments || []);
         })
         .catch((err) => {
-            console.log(err);
             setComments([]);
         });
     }, [article_id]);
@@ -45,7 +43,6 @@ export default function SingleArticle({ currUser }) {
     
     patchArticle(article_id, voteChange)
     .catch((err) => {
-        console.log(err);
         setArticle((currArticle) => ({
             ...currArticle, votes: previousVotes,
         }));
