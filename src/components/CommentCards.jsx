@@ -29,9 +29,9 @@ export default function CommentCards ({ comments, currUser, onCommentDelete }) {
         <ul id="comments-list">
             {comments.map((comment) => (
                 <li key={comment.comment_id} className='comment-card'>
-                    <p><strong>By:</strong> {comment.author}</p>
+                    <p><em>{comment.author}</em></p>
                     <p>{comment.body}</p>
-                    <p><strong>Posted:</strong> {formatDate(comment.created_at)}</p>
+                    <p><strong>{formatDate(comment.created_at)}</strong></p>
                     <p><strong>Votes:</strong> {comment.votes}</p>
                     {comment.author === currUser && (
                         <button onClick={() =>

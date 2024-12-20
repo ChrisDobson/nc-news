@@ -171,6 +171,12 @@ img {
   gap: 10px;
 }
 
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
 .return-to-home {
   margin-top: auto;
   color: #007bff;

@@ -10,7 +10,7 @@ export default function ArticleCards ({ articles }) {
                     <Link to={`/articles/${article.article_id}`} className='article-card-link'>
                     <h3>{article.title} {topicEmojis[article.topic]}</h3>
                     <p><em>{article.author}</em></p>
-                    <p>{formatDate(article.created_at)}</p>
+                    <p><strong>{formatDate(article.created_at)}</strong></p>
                     <div className='article-thumbnail'>
                         <img src={article.article_img_url} alt={`${article.title} thumbnail`} className='thumbnail'/>
                     </div>
