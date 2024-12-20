@@ -186,3 +186,7 @@ img {
 .return-to-home:hover {
   text-decoration: underline;
 }
+
+header {
+  padding: 10px 20px;
+}
