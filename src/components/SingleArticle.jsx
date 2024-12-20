@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Navigate } from 'react-router-dom';
 import Votes from './Votes';
 import AddComment from './AddComment';
 import Collapsible from './Collapsible';
@@ -13,7 +13,7 @@ export default function SingleArticle({ currUser }) {
     const [article, setArticle] = useState(null);
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
     const [isVotingDisabled, setIsVotingDisabled] = useState(false);
     const [voteError, setVoteError] = useState(null);
 
@@ -24,14 +24,14 @@ export default function SingleArticle({ currUser }) {
             setArticle(articleResponse.article);
         })
         .catch(() => {
-            setError('Failed to fetch the article.');
+            setError(true);
         });
         getCommentsById(article_id)
         .then((commentsResponse) => {
             setComments(commentsResponse.comments || []);
         })
         .catch(() => {
-            setError((prevError) => (prevError ? prevError + ' Failed to fetch comments.' : 'Failed to fetch comments.'));
+            console.error('Failed to fetch comments.');
         })
         .finally(() => {
             setIsLoading(false);
@@ -65,7 +65,7 @@ const handleCommentDelete = (comment_id) => {
 }
 
 if (isLoading) return <p>Loading article...</p>;
-if (error && !article) return <p>{error}</p>;
+if (error) return <Navigate to='*'/>;
 
 return (
     <div className={`single-article ${article.topic}`}>
