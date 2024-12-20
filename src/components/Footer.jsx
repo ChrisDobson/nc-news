@@ -1,3 +1,10 @@
 export default function Footer() {
-    return <p>Northcoders 2024 Company No 09912193</p>
+    return (
+        <>
+            <a 
+                href='https://github.com/ChrisDobson/nc-news'
+                target='_blank'
+                >View this project on GitHub</a>
+        </>
+    );
 }
