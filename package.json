@@ -1,7 +1,8 @@
 {
   "name": "nc-news",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A social news aggregation, web content rating and discussion website, hosted through Netlify.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -27,5 +28,10 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
     "vite": "^6.0.1"
+  },
+  "author": "Christopher Dobson <christopher.dobson14@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChrisDobson/nc-news"
   }
 }
