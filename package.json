@@ -30,6 +30,7 @@
     "vite": "^6.0.1"
   },
   "author": "Christopher Dobson <christopher.dobson14@gmail.com>",
+  "licence": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/ChrisDobson/nc-news"
